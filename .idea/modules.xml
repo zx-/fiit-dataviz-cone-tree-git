@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../assignment-gis-zx-/.idea/assignment-gis-zx-.iml" filepath="$PROJECT_DIR$/../assignment-gis-zx-/.idea/assignment-gis-zx-.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/fiit-dataviz-cone-tree-git.iml" filepath="$PROJECT_DIR$/.idea/fiit-dataviz-cone-tree-git.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../suxess/.idea/suxess.iml" filepath="$PROJECT_DIR$/../suxess/.idea/suxess.iml" />
+    </modules>
+  </component>
+</project>
