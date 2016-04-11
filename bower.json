@@ -1,0 +1,22 @@
+{
+  "name": "fiit-dataviz-cone-tree-git",
+  "homepage": "https://github.com/zx-/fiit-dataviz-cone-tree-git",
+  "authors": [
+    "zx- <robertcuprik@hotmail.com>"
+  ],
+  "description": "Project for Data Visualization FIIT",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "three.js": "^0.75.0"
+  }
+}
