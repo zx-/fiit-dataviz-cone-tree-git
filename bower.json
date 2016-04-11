@@ -17,6 +17,7 @@
     "tests"
   ],
   "dependencies": {
-    "three.js": "^0.75.0"
+    "three.js": "^0.75.0",
+    "bootstrap": "^3.3.6"
   }
 }

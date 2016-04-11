@@ -19,4 +19,5 @@
 
 /.idea
 /public/bower_components
+/repos
 /config/initializers/github.rb
