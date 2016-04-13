@@ -20,7 +20,9 @@ class Repo < ActiveRecord::Base
 
 
     ## generate tree
-    tree = { files: [] }
+    tree = { files: [], '___childCount' => 0 }
+    directories = [tree]
+
 
     system("cd #{Rails.root}/repos/#{repo.id} "+'&& find . -printf "%p:%y\n" | sed "s/^\.\///" > ___fileList')
     File.open("#{Rails.root}/repos/#{repo.id}/___fileList").each_line do |file|
@@ -35,10 +37,15 @@ class Repo < ActiveRecord::Base
       path = file_tree[0..-2]
 
       # traverse existing tree
-      path.each { |dir| parent_node = parent_node[dir] }
+      path.each do |dir|
+        parent_node['___childCount'] += 1 if file_type != 'd'
+        parent_node = parent_node[dir]
+      end
 
+      parent_node['___childCount'] += 1 if file_type != 'd'
       if file_type == 'd'
-        parent_node[file_tree.last] = { files: [] }
+        parent_node[file_tree.last] = { files: [], '___childCount' => 0 }
+        directories << parent_node[file_tree.last]
       else
         parent_node[:files] << {
             name: file_tree.last,
@@ -47,6 +54,8 @@ class Repo < ActiveRecord::Base
       end
 
     end
+
+
     repo.tree = tree
     repo.save
 
