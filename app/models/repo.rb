@@ -20,7 +20,7 @@ class Repo < ActiveRecord::Base
 
 
     ## generate tree
-    tree = { files: [], '___childCount' => 0 }
+    tree = { '___files' => [], '___childCount' => 0 }
     directories = [tree]
 
 

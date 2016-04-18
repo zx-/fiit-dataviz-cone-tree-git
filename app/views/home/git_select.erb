@@ -1,3 +1,8 @@
+<div id="web-gl-canvas"></div>
+
 <script>
     var data = <%= raw @json_data %>;
+    $( document ).ready(function() {
+      new FIIT_DV.TreeViz(data);
+    });
 </script>
