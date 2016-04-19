@@ -5,6 +5,7 @@
 var FIIT_DV = {
     ELEMENT_MARGIN: 0.1,
     LEVEL_MARGIN: 3,
+    ELEMENT_WIDTH: 1
 };
 
 FIIT_DV.TreeViz = class {

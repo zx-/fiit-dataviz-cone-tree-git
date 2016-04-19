@@ -19,7 +19,7 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
 
         Object.getOwnPropertyNames( data ).forEach( (key) => {
 
-            if ( key === '.' || key === '___childCount' || key === 'files') return;
+            if ( key === '.' || key === '___childCount' || key === '___files') return;
 
             console.log(key);
 
@@ -28,10 +28,21 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
             let x = startPoint + this.computeWidthFromData( keyData )/2;
 
             this.add(node);
-            startPoint -= this.computeWidthFromData( keyData );
+            startPoint += this.computeWidthFromData( keyData );
 
             node.position.set(x, -FIIT_DV.LEVEL_MARGIN, 0 );
 
+        });
+        
+        data.___files.forEach( (f) => {
+           
+            let file = new FIIT_DV.FileNode(f);
+
+            this.add(file);
+            file.position.set(startPoint, -FIIT_DV.LEVEL_MARGIN, 0 );
+
+            startPoint += FIIT_DV.ELEMENT_MARGIN + FIIT_DV.ELEMENT_WIDTH;
+            
         });
 
         this.createText( name );
@@ -55,8 +66,12 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
     }
 
     computeWidthFromData ( data ) {
-        return data.___childCount
-            + data.___childCount*FIIT_DV.ELEMENT_MARGIN
+
+        var size = data.___childCount + data.___files.length || 1;
+
+
+        return size*FIIT_DV.ELEMENT_WIDTH
+            + size*FIIT_DV.ELEMENT_MARGIN
             + FIIT_DV.ELEMENT_MARGIN;
     }
 

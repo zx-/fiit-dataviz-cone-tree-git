@@ -38,16 +38,14 @@ class Repo < ActiveRecord::Base
 
       # traverse existing tree
       path.each do |dir|
-        parent_node['___childCount'] += 1 if file_type != 'd'
         parent_node = parent_node[dir]
       end
 
-      parent_node['___childCount'] += 1 if file_type != 'd'
       if file_type == 'd'
-        parent_node[file_tree.last] = { files: [], '___childCount' => 0 }
+        parent_node[file_tree.last] = { '___files' => [], '___childCount' => 0 }
         directories << parent_node[file_tree.last]
       else
-        parent_node[:files] << {
+        parent_node['___files'] << {
             name: file_tree.last,
             tags: file_tags
         }
@@ -55,6 +53,7 @@ class Repo < ActiveRecord::Base
 
     end
 
+    set_child_count tree
 
     repo.tree = tree
     repo.save
@@ -62,6 +61,19 @@ class Repo < ActiveRecord::Base
     puts tree
 
     return repo
+  end
+
+  def self.set_child_count(tree)
+    tree.each_pair do |key,val|
+      next if ['___files','___childCount'].include? key
+
+      tree['___childCount'] += set_child_count val
+    end
+
+    tree['___childCount'] += ['___files'].size
+    tree['___childCount'] = 1 if tree['___childCount'] == 0
+
+    tree['___childCount']
   end
 
 

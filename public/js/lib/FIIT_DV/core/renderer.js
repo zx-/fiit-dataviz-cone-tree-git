@@ -24,11 +24,13 @@ FIIT_DV.Renderer = class {
 
         this.initStuff();
 
+        this._angle = 1;
+
     };
 
     initStuff () {
-        this._camera.position.set( -20, 0, 100 );
-        this._camera.lookAt(new THREE.Vector3(-20,0,0));
+        this._camera.position.set( -0, 0, 100 );
+        this._camera.lookAt(new THREE.Vector3(0,0,0));
 
         var light = new THREE.AmbientLight( 0x404040 ); // soft white light
         this.addRenderable( light );
@@ -50,6 +52,20 @@ FIIT_DV.Renderer = class {
         this.addRenderable( lights[0] );
     };
 
+    moveCamera (d) {
+
+        let speed = Math.PI/18;
+
+        this._angle += speed*d;
+
+        this._camera.position.set(
+            100*Math.sin(this._angle),
+            0,
+            100*Math.cos(this._angle)
+        );
+        this._camera.lookAt(new THREE.Vector3(0,0,0));
+    };
+
     setCamera ( camera ) {
 
         this._camera = new THREE.PerspectiveCamera( 75, this._el.clientWidth / this._el.clientHeight, 0.1, 1000 );
@@ -66,6 +82,7 @@ FIIT_DV.Renderer = class {
 
         var d = this._clock.getDelta();
         // THREE.AnimationHandler.update( d ); // deprecated
+        this.moveCamera(d);
         this._render();
 
     };
