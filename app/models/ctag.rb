@@ -15,8 +15,8 @@ class Ctag
           name: attrs[0],
           def: attrs[2],
           type: attrs[3],
-          line: attrs[4].split(':')[1].to_i,
-          language: attrs[5].split(':')[1].strip,
+          line: attrs[4].split(':')[1]&.to_i,
+          language: attrs[5].split(':')[1]&.strip,
           info: attrs[6]&.strip
       }
     end
