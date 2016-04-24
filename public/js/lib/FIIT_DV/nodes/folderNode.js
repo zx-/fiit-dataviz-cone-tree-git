@@ -1,60 +1,6 @@
 /**
  * Created by z on 18.4.2016.
  */
-function intersection(x0, y0, r0, x1, y1, r1) {
-    var a, dx, dy, d, h, rx, ry;
-    var x2, y2;
-
-    /* dx and dy are the vertical and horizontal distances between
-     * the circle centers.
-     */
-    dx = x1 - x0;
-    dy = y1 - y0;
-
-    /* Determine the straight-line distance between the centers. */
-    d = Math.sqrt((dy*dy) + (dx*dx));
-
-    /* Check for solvability. */
-    if (d > (r0 + r1)) {
-        /* no solution. circles do not intersect. */
-        return false;
-    }
-    if (d < Math.abs(r0 - r1)) {
-        /* no solution. one circle is contained in the other */
-        return false;
-    }
-
-    /* 'point 2' is the point where the line through the circle
-     * intersection points crosses the line between the circle
-     * centers.
-     */
-
-    /* Determine the distance from point 0 to point 2. */
-    a = ((r0*r0) - (r1*r1) + (d*d)) / (2.0 * d) ;
-
-    /* Determine the coordinates of point 2. */
-    x2 = x0 + (dx * a/d);
-    y2 = y0 + (dy * a/d);
-
-    /* Determine the distance from point 2 to either of the
-     * intersection points.
-     */
-    h = Math.sqrt((r0*r0) - (a*a));
-
-    /* Now determine the offsets of the intersection points from
-     * point 2.
-     */
-    rx = -dy * (h/d);
-    ry = dx * (h/d);
-
-    /* Determine the absolute intersection points. */
-    var xi = x2 + rx;
-    var xi_prime = x2 - rx;
-    var yi = y2 + ry;
-    var yi_prime = y2 - ry;
-
-    return [xi, xi_prime, yi, yi_prime];
-}
 
 FIIT_DV.FolderNode = class extends THREE.Mesh {
 
@@ -67,89 +13,100 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
         } );
 
         super(geometry,material);
-        
-        this.myWidth = this.computeWidthFromData(data);
 
-        console.log('computing',name);
+        console.log('Creating folder -',name);
 
-        var radius = this.computeRadius( data );
         let keys = Object.getOwnPropertyNames( data ).filter((key) => {
             return !( key === '.' || key === '___childCount' || key === '___files')
         });
-        var position = {x: -radius, z:0};
 
+
+        keys.sort();
+        this.childNodes = [];
         for( let i = 0; i < keys.length; i++ ) {
 
             let key = keys[i];
-
             let keyData = data[key];
-            let node = new FIIT_DV.FolderNode( key, keyData );
+            this.childNodes.push(new FIIT_DV.FolderNode( key, keyData ));
 
-            this.add(node);
-            node.position.set(position.x,-FIIT_DV.LEVEL_MARGIN, position.z);
-
-            //(x0, y0, r0, x1, y1, r1)
-
-            if ( radius != 0 ) {
-
-                if (keys.length > 1) {
-
-                    var childRadius = this.computeWidthFromData(data[keys[i]]) / 2
-                            + this.computeWidthFromData(data[keys[(i + 1) % keys.length]]) / 2;
-
-                } else {
-
-                    var childRadius = this.computeWidthFromData(data[keys[i]]) / 2
-                        + FIIT_DV.ELEMENT_WIDTH/2
-                        + FIIT_DV.ELEMENT_MARGIN;
-
-                }
-
-                let [xi, xi_prime, yi, yi_prime] = intersection(
-                    position.x,
-                    position.z,
-                    childRadius,
-                    0,
-                    0,
-                    radius
-                );
-
-                position.x = xi;
-                position.z = yi;
-            }
         }
 
-        data.___files.forEach( (f) => {
+        data.___files.sort((a,b) => a.name > b.name).forEach( (f) => {
 
             let file = new FIIT_DV.FileNode(f);
-
-            this.add(file);
-            file.position.set(position.x,-FIIT_DV.LEVEL_MARGIN, position.z);
-
-            if ( radius != 0) {
-
-                let [xi, xi_prime, yi, yi_prime] = intersection(
-                    position.x,
-                    position.z,
-                    FIIT_DV.ELEMENT_MARGIN,
-                    0,
-                    0,
-                    radius
-                );
-
-                position.x = xi;
-                position.z = yi;
-
-            }
+            this.childNodes.push(file);
 
         });
 
-        this.createText( name );
+        var circumference = this.childNodes.reduce((val, node) => {
+            return val + node.computedWidth; // there will be one more marging than should // who cares
+        }, 0);
+
+
+        this.radius = this.computeRadius(circumference, this.childNodes);
+
+        if ( this.childNodes.length < 2) {
+
+            this.childNodes.forEach((node) => {
+                node.position.set(0, -FIIT_DV.LEVEL_MARGIN, 0) ;
+                this.add(node);
+                this.addLineToNode(node);
+            });
+
+        } else {
+
+            var position = {x: -this.computedRadius, z: 0};
+            for ( let [ node, nextNode ] of this.makeChildDupletIterator()) {
+
+                this.add(node);
+                node.position.set(position.x, -FIIT_DV.LEVEL_MARGIN, position.z);
+                this.addLineToNode(node);
+
+                let [xi, xi_prime, yi, yi_prime] = intersection(
+                    position.x,
+                    position.z,
+                    node.computedRadius + nextNode.computedRadius,
+                    0,
+                    0,
+                    this.computedRadius
+                );
+
+                position.x = xi;
+                position.z = yi;
+
+            }
+
+        }
+
+        this.createText( `${name} w:${this.computedWidth} ch:${data.___childCount}` );
     }
+
+    * makeChildDupletIterator () { // Return duplets of nodes
+        var nextIndex = 0;
+        var array = this.childNodes;
+        while ( nextIndex != array.length )
+            yield [array[nextIndex++ % array.length],array[nextIndex % array.length]]
+
+    }
+
+    computeRadius ( circumference, childNodes ) {
+        
+        // If folder has none or one child treat him as file
+        if( childNodes.length < 2 ) 
+            return FIIT_DV.ELEMENT_WIDTH + 2 * FIIT_DV.ELEMENT_MARGIN;        
+
+        let size = childNodes[0].computedWidth/2 + childNodes[1].computedWidth/2;
+
+        let angle = size/circumference * Math.PI *2;
+
+        return Math.ceil(((size/2) / Math.sin( angle/2 )));
+
+    }
+
 
     createText ( t ) {
 
-        var text = new THREE_Text.Text2D(
+        var text = new THREE_Text.SpriteText2D(
             t,
             { align: THREE_Text.textAlign.center,  font: '15px Arial', fillStyle: '#000000' , antialias: true }
         );
@@ -166,35 +123,35 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
 
         var size = ( !data )? 1 : data.___childCount + data.___files.length || 1;
 
-        return size*FIIT_DV.ELEMENT_WIDTH
-            + size*FIIT_DV.ELEMENT_MARGIN
-            + FIIT_DV.ELEMENT_MARGIN;
+        return (size*FIIT_DV.ELEMENT_WIDTH + size*FIIT_DV.ELEMENT_MARGIN)/ Math.PI;
     }
 
 
+    get computedRadius () {
+        return this.radius;
+    }
+
+    get computedDiameter () {
+        return this.radius*2;
+    }
+    
     get computedWidth () {
-        return this.myWidth;
+        return this.computedDiameter;
     }
-
-    computeRadius ( data ) {
-
-        let total = this.myWidth;
-        let keys = Object.getOwnPropertyNames( data ).filter((key) => {
-            return !( key === '.' || key === '___childCount' || key === '___files')
+    
+    addLineToNode ( node ) {
+        var material = new THREE.LineBasicMaterial({
+            color: 0x0000ff
         });
 
-        let count = data.___childCount + data.___files.length;
-        if ( count < 2 ) return 0;
+        var geometry = new THREE.Geometry();
+        geometry.vertices.push(
+            new THREE.Vector3( 0, 0, 0 ),
+            node.position
+        );
 
-
-
-        let size = this.computeWidthFromData(data[keys[0]])/2
-            + this.computeWidthFromData(data[keys[1]])/2;
-
-        let angle = size/total * Math.PI *2;
-
-        return (size/2) / Math.sin( angle/2 );
-
+        var line = new THREE.Line( geometry, material );
+        this.add( line );
     }
 
 };

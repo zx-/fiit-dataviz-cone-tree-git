@@ -17,7 +17,7 @@ FIIT_DV.FileNode = class extends THREE.Mesh {
 
     createText ( t ) {
 
-        var text = new THREE_Text.Text2D(
+        var text = new THREE_Text.SpriteText2D(
             t,
             { align: THREE_Text.textAlign.center,  font: '15px Arial', fillStyle: '#000000' , antialias: true }
         );
@@ -28,6 +28,14 @@ FIIT_DV.FileNode = class extends THREE.Mesh {
 
         this.text = text;
 
+    }
+
+    get computedWidth () {
+        return FIIT_DV.ELEMENT_WIDTH + 2 * FIIT_DV.ELEMENT_MARGIN;
+    }
+
+    get computedRadius () {
+        return this.computedWidth/2;
     }
 
 };

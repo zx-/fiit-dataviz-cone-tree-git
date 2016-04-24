@@ -3,7 +3,7 @@
  */
 
 var FIIT_DV = {
-    ELEMENT_MARGIN: 1,
+    ELEMENT_MARGIN: 2,
     LEVEL_MARGIN: 3,
     ELEMENT_WIDTH: 1
 };

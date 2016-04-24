@@ -70,7 +70,7 @@ class Repo < ActiveRecord::Base
       tree['___childCount'] += set_child_count val
     end
 
-    tree['___childCount'] += ['___files'].size
+    tree['___childCount'] += tree['___files'].size
     tree['___childCount'] = 1 if tree['___childCount'] == 0
 
     tree['___childCount']
