@@ -112,7 +112,7 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
         );
 
         this.add(text);
-        text.position.set( 0 , -0.5, 0 );
+        text.position.set( 0, FIIT_DV.ELEMENT_MARGIN/2, 0 );
         text.scale.set( 0.05, 0.05, 0.05 );
 
         this.text = text;
@@ -150,8 +150,8 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
             node.position
         );
 
-        var line = new THREE.Line( geometry, material );
-        this.add( line );
+        this.line = new THREE.Line( geometry, material );
+        this.add( this.line );
     }
 
 };

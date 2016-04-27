@@ -4,7 +4,7 @@
 
 var FIIT_DV = {
     ELEMENT_MARGIN: 2,
-    LEVEL_MARGIN: 3,
+    LEVEL_MARGIN: 6,
     ELEMENT_WIDTH: 1
 };
 
