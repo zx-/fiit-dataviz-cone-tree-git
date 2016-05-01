@@ -14,7 +14,6 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
 
         super(geometry,material);
 
-        console.log('Creating folder -',name);
 
         let keys = Object.getOwnPropertyNames( data ).filter((key) => {
             return !( key === '.' || key === '___childCount' || key === '___files')
@@ -79,6 +78,7 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
         }
 
         this.createText( `${name} w:${this.computedWidth} ch:${data.___childCount}` );
+        this.userData = this;
     }
 
     * makeChildDupletIterator () { // Return duplets of nodes
@@ -125,23 +125,10 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
 
         return (size*FIIT_DV.ELEMENT_WIDTH + size*FIIT_DV.ELEMENT_MARGIN)/ Math.PI;
     }
-
-
-    get computedRadius () {
-        return this.radius;
-    }
-
-    get computedDiameter () {
-        return this.radius*2;
-    }
-    
-    get computedWidth () {
-        return this.computedDiameter;
-    }
     
     addLineToNode ( node ) {
         var material = new THREE.LineBasicMaterial({
-            color: 0x0000ff
+            color: FIIT_DV.LINE_COLOUR
         });
 
         var geometry = new THREE.Geometry();
@@ -152,6 +139,22 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
 
         this.line = new THREE.Line( geometry, material );
         this.add( this.line );
+    }
+
+    select () {
+        console.log('selected',this);
+    }
+
+    get computedRadius () {
+        return this.radius;
+    }
+
+    get computedDiameter () {
+        return this.radius*2;
+    }
+
+    get computedWidth () {
+        return this.computedDiameter;
     }
 
 };

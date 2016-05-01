@@ -5,7 +5,9 @@
 var FIIT_DV = {
     ELEMENT_MARGIN: 2,
     LEVEL_MARGIN: 6,
-    ELEMENT_WIDTH: 1
+    ELEMENT_WIDTH: 1,
+    LINE_COLOUR: 0x0000ff,
+    LINE_SELECTED_COLOUR: 0xFF8000
 };
 
 FIIT_DV.TreeViz = class {
@@ -22,6 +24,7 @@ FIIT_DV.TreeViz = class {
 
         this.renderer.addRenderable( this.tree );
 
+        new FIIT_DV.MouseClickLogger( this.renderer._scene, this.renderer._camera );
 
         this.timer.start();
         
