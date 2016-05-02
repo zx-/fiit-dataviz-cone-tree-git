@@ -18,6 +18,8 @@
   ],
   "dependencies": {
     "three.js": "^0.75.0",
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^3.3.6",
+    "threex.objcoord": "*",
+    "threex.htmlmixer": "*"
   }
 }
