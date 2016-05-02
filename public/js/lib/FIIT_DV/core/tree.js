@@ -4,10 +4,10 @@
 
 FIIT_DV.Tree = class extends THREE.Object3D {
 
-    constructor ( data ) {
+    constructor ( data, selector ) {
 
         super();
-        this.add( new FIIT_DV.FolderNode( 'root', data ));
+        this.add( new FIIT_DV.FolderNode( 'root', '', data, selector ));
 
     }
 

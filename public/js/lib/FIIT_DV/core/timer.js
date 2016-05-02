@@ -36,7 +36,7 @@ FIIT_DV.Timer = class {
 
     };
 
-    _tick () {
+    _tick (now) {
 
         if ( this._isEnabled ) {
 
@@ -51,7 +51,7 @@ FIIT_DV.Timer = class {
 
             for (var i = 0; i < this._tickListeners.length; i++) {
 
-                this._tickListeners[ i ].tick( elapsed );
+                this._tickListeners[ i ].tick( elapsed, now );
 
             }
 

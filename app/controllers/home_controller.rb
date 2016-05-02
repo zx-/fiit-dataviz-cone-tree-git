@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+
+
   def index
   end
 
@@ -11,9 +13,14 @@ class HomeController < ApplicationController
     @json_data = @repo.tree.to_json
   end
 
+
+  def show_file
+    @file = Repo.find_by_id(par[:repo]).show_file(par[:path].gsub(/\/\//,'.'))
+  end
+
   private
 
   def par
-    params.permit(:repo);
+    params.permit(:repo,:path,:format);
   end
 end

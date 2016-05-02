@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root 'home#index'
 
   post 'git-select' => 'home#git_select'
+  get 'file/:repo/:path' => 'home#show_file'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

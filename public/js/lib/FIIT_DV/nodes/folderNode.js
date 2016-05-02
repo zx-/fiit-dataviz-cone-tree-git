@@ -4,7 +4,7 @@
 
 FIIT_DV.FolderNode = class extends THREE.Mesh {
 
-    constructor ( name, data) {
+    constructor ( name, path, data, selector ) {
 
         var geometry = new THREE.TetrahedronGeometry();
         var material = new THREE.MeshPhongMaterial( {
@@ -13,6 +13,9 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
         } );
 
         super(geometry,material);
+
+        this.path = path;
+        this.selector = selector;
 
 
         let keys = Object.getOwnPropertyNames( data ).filter((key) => {
@@ -26,13 +29,13 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
 
             let key = keys[i];
             let keyData = data[key];
-            this.childNodes.push(new FIIT_DV.FolderNode( key, keyData ));
+            this.childNodes.push(new FIIT_DV.FolderNode( key, `${this.path}/${key}`, keyData, selector ));
 
         }
 
         data.___files.sort((a,b) => a.name > b.name).forEach( (f) => {
 
-            let file = new FIIT_DV.FileNode(f);
+            let file = new FIIT_DV.FileNode(this.path, f, selector);
             this.childNodes.push(file);
 
         });
@@ -99,7 +102,8 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
 
         let angle = size/circumference * Math.PI *2;
 
-        return Math.ceil(((size/2) / Math.sin( angle/2 )));
+        //return Math.ceil(((size/2) / Math.sin( angle/2 )));
+        return ((size/2) / Math.sin( angle/2 ));
 
     }
 
@@ -142,7 +146,7 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
     }
 
     select () {
-        console.log('selected',this);
+        this.selector.selectFolder(this);
     }
 
     get computedRadius () {

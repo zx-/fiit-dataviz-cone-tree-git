@@ -12,8 +12,8 @@ FIIT_DV.MouseClickLogger = class {
         this.mouseVec2 = new THREE.Vector2();
         this.raycaster = new THREE.Raycaster();
 
-        window.addEventListener( 'mousedown', this.mouseDown.bind(this), false );
-        window.addEventListener( 'mouseup', this.mouseUp.bind(this), false );
+        $('div').on( 'mousedown', this.mouseDown.bind(this));
+        $('div').on( 'mouseup', this.mouseUp.bind(this));
 
         this.ignoredTypes = [ "Line", "Sprite" ];
 
@@ -36,7 +36,6 @@ FIIT_DV.MouseClickLogger = class {
 
 
     mouseClick ( event ) {
-
 
         this.mouseVec2.x = ( event.clientX / window.innerWidth ) * 2 - 1;
         this.mouseVec2.y = - ( event.clientY / window.innerHeight ) * 2 + 1;

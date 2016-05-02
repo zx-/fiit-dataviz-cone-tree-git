@@ -2,6 +2,7 @@
 
 <script>
     var data = <%= raw @json_data %>;
+    var REPOSITORY = <%= raw @repo.to_json %>;
     $( document ).ready(function() {
       new FIIT_DV.TreeViz(data);
     });

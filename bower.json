@@ -21,5 +21,13 @@
     "bootstrap": "^3.3.6",
     "threex.objcoord": "*",
     "threex.htmlmixer": "*"
+  },
+  "overrides": {
+    "threejs": {
+      "main": [
+        "build/three.min.js",
+        "three.js/examples/js/renderers/CSS3DRenderer.js"
+      ]
+    }
   }
 }

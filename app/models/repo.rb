@@ -3,6 +3,10 @@ class Repo < ActiveRecord::Base
   @@user = Octokit.user
   @@user.login
 
+  def show_file(path)
+    File.open("#{Rails.root}/repos/#{self.id}#{path}").read
+  end
+
   def self.parse_new(url)
     git_repo = Octokit.repo(Octokit::Repository.from_url(url))
     clone_url = git_repo.clone_url

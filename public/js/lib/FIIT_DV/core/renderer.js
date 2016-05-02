@@ -11,24 +11,18 @@ FIIT_DV.Renderer = class {
 
         this._el = document.getElementById( "web-gl-canvas" );
         this._scene = new THREE.Scene();
-        this._camera = new THREE.PerspectiveCamera( 25, ( this._el.clientWidth-20 ) / ( this._el.clientHeight-20 ), 0.1, 1000 );
-        this._renderer = new THREE.WebGLRenderer( { antialias:true } );
+        this._camera = new THREE.PerspectiveCamera( 25, ( this._el.clientWidth ) / ( this._el.clientHeight), 0.1, 1000 );
+        this._renderer = new THREE.WebGLRenderer( { antialias:true, alpha:true } );
 
         this._scene.fog = new THREE.FogExp2( 0xdddddd, 0.006 );
-        this._renderer.setSize( this._el.clientWidth-10, this._el.clientHeight-10 );
-        this._renderer.setClearColor( this._scene.fog.color, 1 );
+        this._renderer.setSize( this._el.clientWidth, this._el.clientHeight );
+        this._renderer.setClearColor( this._scene.fog.color, 0 );
         this._renderer.shadowMapSoft = true;
         this._renderer.shadowMap.enabled = true;
         this._renderer.shadowMap.type = THREE.PCFSoftShadowMap;
         this._el.appendChild( this._renderer.domElement );
         this.canvas = this._renderer.domElement;
         this._clock = new THREE.Clock();
-
-        this._controls = new THREE.OrbitControls( this._camera, this._renderer.domElement );
-        //controls.addEventListener( 'change', render ); // add this only if there is no animation loop (requestAnimationFrame)
-        this._controls.enableDamping = true;
-        this._controls.dampingFactor = 0.25;
-        this._controls.enableZoom = false;
 
 
         this.initStuff();

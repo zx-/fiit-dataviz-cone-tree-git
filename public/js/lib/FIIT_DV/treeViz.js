@@ -19,12 +19,22 @@ FIIT_DV.TreeViz = class {
         this.timer = new FIIT_DV.Timer();
         this.renderer = new FIIT_DV.Renderer(this.timer);
 
-        this.tree = new FIIT_DV.Tree( data );
+        this.selector = new FIIT_DV.Selector({
+            renderer: this.renderer._renderer,
+            scene: this.renderer._scene,
+            camera: this.renderer._camera
+        });
+
+        this.tree = new FIIT_DV.Tree( data, this.selector );
         console.log(this.tree);
 
         this.renderer.addRenderable( this.tree );
 
+
         new FIIT_DV.MouseClickLogger( this.renderer._scene, this.renderer._camera );
+
+
+        this.timer.addTickListener(this.selector);
 
         this.timer.start();
         

@@ -5,9 +5,10 @@
 
 FIIT_DV.FileNode = class extends THREE.Mesh {
 
-    constructor ( data ) {
+    constructor ( path, data, selector ) {
 
         var geometry = new THREE.BoxGeometry( 1, .3, 1 );
+
 
 
         if (data.tags && data.tags[0].language) {
@@ -30,8 +31,11 @@ FIIT_DV.FileNode = class extends THREE.Mesh {
 
         super(geometry,material);
 
+
+        this.path = path + "/" + data.name;
         this.userData = this;
         this.createText( data.name );
+        this.selector = selector;
 
     }
 
@@ -54,7 +58,7 @@ FIIT_DV.FileNode = class extends THREE.Mesh {
     }
 
     select () {
-        console.log('selected',this);
+        this.selector.selectFile(this);
     }
 
     get computedWidth () {
