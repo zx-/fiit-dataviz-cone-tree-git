@@ -31,7 +31,11 @@ FIIT_DV.TreeViz = class {
         this.renderer.addRenderable( this.tree );
 
 
-        new FIIT_DV.MouseClickLogger( this.renderer._scene, this.renderer._camera );
+        new FIIT_DV.MouseClickLogger(
+            this.renderer._scene,
+            this.renderer._camera,
+            this.selector
+        );
 
 
         this.timer.addTickListener(this.selector);

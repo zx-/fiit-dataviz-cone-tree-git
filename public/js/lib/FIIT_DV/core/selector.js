@@ -26,7 +26,18 @@ FIIT_DV.Selector = class {
         // this._controls.dampingFactor = 0.25;
         // this._controls.enableZoom = false;
 
+        this.createControls();
 
+    }
+
+    tick ( delta, now ) {
+
+        this.renderer.render( this.scene, this.camera );
+        this.controls.update();
+
+    }
+
+    createControls () {
         var controls = new THREE.TrackballControls( this.camera );
         controls.rotateSpeed = 1.0;
         controls.zoomSpeed = 1.2;
@@ -39,15 +50,6 @@ FIIT_DV.Selector = class {
 
 
         this.controls = controls;
-
-    }
-
-    tick ( delta, now ) {
-
-        this.renderer.render( this.scene, this.camera );
-        this.controls.update();
-
-
     }
 
     selectFile ( e ) {
@@ -58,54 +60,38 @@ FIIT_DV.Selector = class {
         fileElemHash.selected = true;
         fileElemHash.detail = {};
 
-        var vector = new THREE.Vector3();
-        vector.setFromMatrixPosition( e.matrixWorld );
+        var ePositionVec = new THREE.Vector3();
+        ePositionVec.setFromMatrixPosition( e.matrixWorld );
 
+        if ( !fileElemHash.detail.iframeDetail &&  !fileElemHash.detail.plane) {
 
-            var element = document.createElement( 'iframe' );
-            element.src = "file/"+REPOSITORY.id +"/" + encodeURIComponent(e.userData.path).replace(/\./g, '%2F%2F');
-            element.style.width = '800px';
-            element.style.height = '800px';
-            element.style.border = '0px';
+            fileElemHash.detail.iframeDetail = this.createCss3IframeElement(
+                ePositionVec,
+                e.userData.path
+            );
 
-            var object = new THREE.CSS3DObject( element );
-            object.scale.x = 0.025;
-            object.scale.y = 0.025;
-        object.position.x = vector.x + 0.7 ;
-        object.position.y = vector.y - 15;
-        object.position.z = vector.z + 0.7;
-        //
-        // object.position.y -= 10;
+            fileElemHash.detail.plane = this.createSceneIframeElement(
+                ePositionVec
+            );
 
-        this.scene.add( object );
-        fileElemHash.detail.iframeDetail = object;
-
-        var planeMaterial   = new THREE.MeshBasicMaterial({
-            opacity	: 0,
-            color	: new THREE.Color('black'),
-            blending: THREE.NoBlending,
-            side	: THREE.DoubleSide
-        });
-        var geometry	= new THREE.PlaneGeometry( 800, 800 );
-        var object3d	= new THREE.Mesh( geometry, planeMaterial );
-
-        object = object3d;
-        object.scale.x = 0.025;
-        object.scale.y = 0.025;
-        object.position.x = vector.x + 0.7 ;
-        object.position.y = vector.y - 15;
-        object.position.z = vector.z + 0.7;
-
-        this.htmlObj.scene.add(object3d);
-        fileElemHash.detail.plane = object;
+        }
+        this.scene.add( fileElemHash.detail.iframeDetail ); // add to css3scene
+        this.htmlObj.scene.add(fileElemHash.detail.plane); //add to normal scene
 
         this.colorLines( fileElemHash.element.parent, fileElemHash.element.path );
+
+
     //    this.lookAtRec( fileElemHash.element.parent );
 
-        // var lookAtvec = new THREE.Vector3(this.camera.x,0,this.camera.z);
-        //
-        // fileElemHash.detail.iframeDetail.lookAt(lookAtvec);
-        // fileElemHash.detail.plane.lookAt(lookAtvec);
+        var lookAtvec = new THREE.Vector3(this.camera.x,0,this.camera.z);
+        var axis = new THREE.Vector3(0,1,0);
+        var rad = Math.PI/2;
+
+        fileElemHash.detail.iframeDetail.lookAt(lookAtvec);
+        fileElemHash.detail.plane.lookAt(lookAtvec);
+
+        fileElemHash.detail.iframeDetail.rotateOnAxis(axis,rad);
+        fileElemHash.detail.plane.rotateOnAxis(axis,rad);
 
     }
 
@@ -119,13 +105,13 @@ FIIT_DV.Selector = class {
 
     };
 
-    colorLines ( e, path ) {
+    colorLines ( e, path, color = FIIT_DV.LINE_SELECTED_COLOUR ) {
 
         if(!e.lines || !e.lines[path] ) return;
 
-        e.lines[path].material.color.setHex(0xff0000);
-        e.material.color.setHex(0xff0000);
-        this.colorLines( e.parent, e.path );
+        e.lines[path].material.color.setHex(color);
+        e.material.color.setHex(color);
+        this.colorLines( e.parent, e.path, color );
     }
 
     selectFolder ( element ) {
@@ -140,9 +126,66 @@ FIIT_DV.Selector = class {
 
     }
 
+    createCss3IframeElement( position, path ) {
+        var element = document.createElement( 'iframe' );
+        element.src = "file/"+REPOSITORY.id +"/" + encodeURIComponent(path).replace(/\./g, '%2F%2F');
+        element.style.width = '800px';
+        element.style.height = '800px';
+        element.style.border = '0px';
+
+        var object = new THREE.CSS3DObject( element );
+        object.scale.x = 0.025;
+        object.scale.y = 0.025;
+        object.position.x = position.x + 0.7 ;
+        object.position.y = position.y - 15;
+        object.position.z = position.z + 0.7;
+        //
+        // object.position.y -= 10;
+
+        return object;
+    }
+
+    createSceneIframeElement( position ) {
+
+        var planeMaterial   = new THREE.MeshBasicMaterial({
+            opacity	: 0,
+            color	: new THREE.Color('black'),
+            blending: THREE.NoBlending,
+            side	: THREE.DoubleSide
+        });
+        var geometry	= new THREE.PlaneGeometry( 800, 800 );
+        var object	= new THREE.Mesh( geometry, planeMaterial );
+
+        object.scale.x = 0.025;
+        object.scale.y = 0.025;
+        object.position.x = position.x + 0.7 ;
+        object.position.y = position.y - 15;
+        object.position.z = position.z + 0.7;
+
+        return object;
+    }
+
     deselect ( element ) {
 
+        var elemPaths = Object.getOwnPropertyNames(this.elements);
 
+        elemPaths.forEach((path) => {
+            let elemHash = this.elements[path];
+            if( elemHash.selected ) {
+
+                this.colorLines(
+                    elemHash.element.parent,
+                    path,
+                    FIIT_DV.LINE_COLOUR
+                );
+
+                this.scene.remove(elemHash.detail.iframeDetail);
+                this.htmlObj.scene.remove(elemHash.detail.plane);
+
+                elemHash.selected = false;
+
+            }
+        })
 
     }
 

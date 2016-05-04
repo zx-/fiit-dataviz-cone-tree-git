@@ -4,10 +4,11 @@
 
 FIIT_DV.MouseClickLogger = class {
 
-    constructor ( scene, camera ) {
+    constructor ( scene, camera, selector ) {
 
         this.scene = scene;
         this.camera = camera;
+        this.selector = selector;
 
         this.mouseVec2 = new THREE.Vector2();
         this.raycaster = new THREE.Raycaster();
@@ -54,6 +55,8 @@ FIIT_DV.MouseClickLogger = class {
 
             clickedObject.object.userData.select();
 
+        } else {
+            this.selector.deselect();
         }
 
     }

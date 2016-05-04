@@ -2,25 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81a02b07-ecc2-4f25-8b1e-5c321c24d105" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../assignment-gis-zx-/.idea/assignment-gis-zx-.iml" afterPath="$PROJECT_DIR$/../assignment-gis-zx-/.idea/assignment-gis-zx-.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/repo.rb" afterPath="$PROJECT_DIR$/app/models/repo.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/git_select.erb" afterPath="$PROJECT_DIR$/app/views/home/git_select.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/lib/FIIT_DV/core/renderer.js" afterPath="$PROJECT_DIR$/public/js/lib/FIIT_DV/core/renderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/lib/FIIT_DV/core/timer.js" afterPath="$PROJECT_DIR$/public/js/lib/FIIT_DV/core/timer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/lib/FIIT_DV/core/tree.js" afterPath="$PROJECT_DIR$/public/js/lib/FIIT_DV/core/tree.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/lib/FIIT_DV/core/selector.js" afterPath="$PROJECT_DIR$/public/js/lib/FIIT_DV/core/selector.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/lib/FIIT_DV/loggers/MouseClickLogger.js" afterPath="$PROJECT_DIR$/public/js/lib/FIIT_DV/loggers/MouseClickLogger.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/lib/FIIT_DV/nodes/fileNode.js" afterPath="$PROJECT_DIR$/public/js/lib/FIIT_DV/nodes/fileNode.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/lib/FIIT_DV/nodes/folderNode.js" afterPath="$PROJECT_DIR$/public/js/lib/FIIT_DV/nodes/folderNode.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/lib/FIIT_DV/treeViz.js" afterPath="$PROJECT_DIR$/public/js/lib/FIIT_DV/treeViz.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../suxess/public/angular-app/directives/results/timeTabDirective.js" afterPath="$PROJECT_DIR$/../suxess/public/angular-app/directives/results/timeTabDirective.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../suxess/public/index.html" afterPath="$PROJECT_DIR$/../suxess/public/index.html" />
     </list>
     <ignored path="fiit-dataviz-cone-tree-git.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,13 +36,13 @@
     <favorites_list name="fiit-dataviz-cone-tree-git" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.48213124">
+    <splitter split-orientation="horizontal" split-proportion="0.5417933">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/public/js/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="935">
+                <state relative-caret-position="1500">
                   <caret line="100" column="2" selection-start-line="100" selection-start-column="2" selection-end-line="100" selection-end-column="2" />
                   <folding />
                 </state>
@@ -66,8 +52,8 @@
           <file leaf-file-name="MouseClickLogger.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/public/js/lib/FIIT_DV/loggers/MouseClickLogger.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="465">
-                  <caret line="33" column="37" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
+                <state relative-caret-position="557">
+                  <caret line="50" column="9" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
                   <folding>
                     <element signature="e#0#37#0" expanded="false" />
                   </folding>
@@ -78,7 +64,7 @@
           <file leaf-file-name="controls.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/public/js/lib/controls.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="150">
+                <state relative-caret-position="285">
                   <caret line="19" column="74" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="74" />
                   <folding />
                 </state>
@@ -108,8 +94,8 @@
           <file leaf-file-name="folderNode.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/public/js/lib/FIIT_DV/nodes/folderNode.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="945">
-                  <caret line="141" column="10" selection-start-line="141" selection-start-column="10" selection-end-line="141" selection-end-column="10" />
+                <state relative-caret-position="228">
+                  <caret line="141" column="19" selection-start-line="141" selection-start-column="19" selection-end-line="141" selection-end-column="38" />
                   <folding />
                 </state>
               </provider>
@@ -119,7 +105,7 @@
             <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="255">
-                  <caret line="17" column="71" selection-start-line="17" selection-start-column="71" selection-end-line="17" selection-end-column="71" />
+                  <caret line="17" column="68" selection-start-line="17" selection-start-column="68" selection-end-line="17" selection-end-column="68" />
                   <folding />
                 </state>
               </provider>
@@ -138,8 +124,8 @@
           <file leaf-file-name="application.html.erb" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+                <state relative-caret-position="105">
+                  <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
                   <folding />
                 </state>
               </provider>
@@ -148,8 +134,8 @@
           <file leaf-file-name="selector.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/public/js/lib/FIIT_DV/core/selector.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="660">
-                  <caret line="85" column="11" selection-start-line="85" selection-start-column="11" selection-end-line="85" selection-end-column="11" />
+                <state relative-caret-position="589">
+                  <caret line="184" column="33" selection-start-line="184" selection-start-column="33" selection-end-line="184" selection-end-column="33" />
                   <folding>
                     <element signature="e#0#36#0" expanded="false" />
                   </folding>
@@ -160,12 +146,24 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="selector.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/public/js/lib/FIIT_DV/core/selector.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="481">
+                  <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#0#36#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="treeViz.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/public/js/lib/FIIT_DV/treeViz.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="375">
-                  <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+                <state relative-caret-position="135">
+                  <caret line="9" column="24" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="24" />
                   <folding />
                 </state>
               </provider>
@@ -181,14 +179,12 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="show_file.erb" pinned="false" current-in-tab="true">
+          <file leaf-file-name="show_file.erb" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/views/home/show_file.erb">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="15">
-                  <caret line="1" column="56" selection-start-line="1" selection-start-column="56" selection-end-line="1" selection-end-column="56" />
-                  <folding>
-                    <element signature="n#style#0;n#pre#0;n#!!top" expanded="true" />
-                  </folding>
+                  <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -216,7 +212,7 @@
           <file leaf-file-name="threex.htmlmixer.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/public/bower_components/threex.htmlmixer/threex.htmlmixer.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="629">
+                <state relative-caret-position="1680">
                   <caret line="112" column="72" selection-start-line="105" selection-start-column="8" selection-end-line="112" selection-end-column="72" />
                   <folding />
                 </state>
@@ -238,16 +234,6 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="180">
                   <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="bower.json" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/bower.json">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="345">
-                  <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
                   <folding />
                 </state>
               </provider>
@@ -320,10 +306,7 @@
         <option value="$PROJECT_DIR$/public/js/lib/FIIT_DV/nodes/folderNode.js" />
         <option value="$PROJECT_DIR$/bower.json" />
         <option value="$PROJECT_DIR$/public/js/lib/FIIT_DV/core/timer.js" />
-        <option value="$PROJECT_DIR$/public/js/lib/FIIT_DV/treeViz.js" />
         <option value="$PROJECT_DIR$/public/bower_components/threex.htmlmixer/threex.htmlmixerhelpers.js" />
-        <option value="$PROJECT_DIR$/public/js/lib/FIIT_DV/loggers/MouseClickLogger.js" />
-        <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/repo.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
@@ -332,6 +315,9 @@
         <option value="$PROJECT_DIR$/public/js/lib/FIIT_DV/core/renderer.js" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
         <option value="$PROJECT_DIR$/public/bower_components/threex.htmlmixer/threex.htmlmixer.js" />
+        <option value="$PROJECT_DIR$/public/js/lib/FIIT_DV/treeViz.js" />
+        <option value="$PROJECT_DIR$/public/js/lib/FIIT_DV/loggers/MouseClickLogger.js" />
+        <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/public/js/lib/FIIT_DV/core/selector.js" />
       </list>
     </option>
@@ -349,9 +335,10 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="-1157" />
-    <option name="width" value="1920" />
-    <option name="height" value="1157" />
+    <option name="x" value="-1600" />
+    <option name="y" value="24" />
+    <option name="width" value="1600" />
+    <option name="height" value="876" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -378,7 +365,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -408,24 +395,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="repos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fiit-dataviz-cone-tree-git" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fiit-dataviz-cone-tree-git" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="repos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="71" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -729,8 +698,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="RailsProjectView" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -738,7 +707,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="project.settings.patched" value="true" />
     <property name="js-jscs-nodeInterpreter" value="/usr/bin/node" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.ruby.settings.RubyActiveModuleSdkConfigurable" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
     <property name="JavaScriptPreferStrict" value="true" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
@@ -988,24 +957,23 @@
       <envs />
       <method />
     </configuration>
-    <list size="17">
+    <list size="16">
       <item index="0" class="java.lang.String" itemvalue="IRB console.Rails console: suxess" />
       <item index="1" class="java.lang.String" itemvalue="IRB console.Rails console: dataviz" />
-      <item index="2" class="java.lang.String" itemvalue="IRB console.IRB console: suxess" />
-      <item index="3" class="java.lang.String" itemvalue="RSpec.rspec-tests" />
-      <item index="4" class="java.lang.String" itemvalue="Rails.Development: assignment-gis-zx-" />
-      <item index="5" class="java.lang.String" itemvalue="Rails.Development: fiit-dataviz-cone-tree-git" />
-      <item index="6" class="java.lang.String" itemvalue="Rails.Development: suxess" />
-      <item index="7" class="java.lang.String" itemvalue="Rails.Production: assignment-gis-zx-" />
-      <item index="8" class="java.lang.String" itemvalue="Rails.Production: fiit-dataviz-cone-tree-git" />
-      <item index="9" class="java.lang.String" itemvalue="Rails.Production: suxess" />
-      <item index="10" class="java.lang.String" itemvalue="Rake.spec: assignment-gis-zx-" />
-      <item index="11" class="java.lang.String" itemvalue="Rake.spec: fiit-dataviz-cone-tree-git" />
-      <item index="12" class="java.lang.String" itemvalue="Rake.spec: suxess" />
-      <item index="13" class="java.lang.String" itemvalue="Rake.test: assignment-gis-zx-" />
-      <item index="14" class="java.lang.String" itemvalue="Rake.test: fiit-dataviz-cone-tree-git" />
-      <item index="15" class="java.lang.String" itemvalue="Rake.test: suxess" />
-      <item index="16" class="java.lang.String" itemvalue="Ruby.click_heatmap_evaluator" />
+      <item index="2" class="java.lang.String" itemvalue="RSpec.rspec-tests" />
+      <item index="3" class="java.lang.String" itemvalue="Rails.Development: assignment-gis-zx-" />
+      <item index="4" class="java.lang.String" itemvalue="Rails.Development: fiit-dataviz-cone-tree-git" />
+      <item index="5" class="java.lang.String" itemvalue="Rails.Development: suxess" />
+      <item index="6" class="java.lang.String" itemvalue="Rails.Production: assignment-gis-zx-" />
+      <item index="7" class="java.lang.String" itemvalue="Rails.Production: fiit-dataviz-cone-tree-git" />
+      <item index="8" class="java.lang.String" itemvalue="Rails.Production: suxess" />
+      <item index="9" class="java.lang.String" itemvalue="Rake.spec: assignment-gis-zx-" />
+      <item index="10" class="java.lang.String" itemvalue="Rake.spec: fiit-dataviz-cone-tree-git" />
+      <item index="11" class="java.lang.String" itemvalue="Rake.spec: suxess" />
+      <item index="12" class="java.lang.String" itemvalue="Rake.test: assignment-gis-zx-" />
+      <item index="13" class="java.lang.String" itemvalue="Rake.test: fiit-dataviz-cone-tree-git" />
+      <item index="14" class="java.lang.String" itemvalue="Rake.test: suxess" />
+      <item index="15" class="java.lang.String" itemvalue="Ruby.click_heatmap_evaluator" />
     </list>
     <recent_temporary>
       <list size="1">
@@ -1039,17 +1007,18 @@
       <workItem from="1461686641750" duration="9991000" />
       <workItem from="1461744421408" duration="3857000" />
       <workItem from="1461873073189" duration="31461000" />
+      <workItem from="1462365968507" duration="3338000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="145582000" />
+    <option name="totallyTimeSpent" value="148920000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-1157" width="1920" height="1157" extended-state="6" />
+    <frame x="-1600" y="24" width="1600" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.178762" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32923368" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1104,6 +1073,16 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/repos/5" />
+      <path value="$PROJECT_DIR$/repos/7" />
+      <path value="$PROJECT_DIR$/repos/4" />
+      <path value="$PROJECT_DIR$/repos/41" />
+      <path value="$PROJECT_DIR$/repos/8" />
+      <path value="$PROJECT_DIR$/repos/40" />
+    </ignored-roots>
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <option name="time" value="30" />
@@ -1148,7 +1127,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
           <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1156,7 +1134,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="615">
           <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1171,7 +1148,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="855">
           <caret line="57" column="3" selection-start-line="57" selection-start-column="3" selection-end-line="57" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1200,7 +1176,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3345">
           <caret line="223" column="0" selection-start-line="223" selection-start-column="0" selection-end-line="223" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1225,7 +1200,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
           <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1233,7 +1207,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="905">
           <caret line="76" column="34" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1241,7 +1214,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="705">
           <caret line="47" column="61" selection-start-line="47" selection-start-column="61" selection-end-line="47" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1249,7 +1221,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1050">
           <caret line="70" column="14" selection-start-line="70" selection-start-column="14" selection-end-line="70" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1257,7 +1228,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="25" column="14" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1265,7 +1235,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="705">
           <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1273,18 +1242,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
           <caret line="135" column="50" selection-start-line="135" selection-start-column="50" selection-end-line="135" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/repos/71/db_config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/repos/71/db_config.js" />
     <entry file="file://$PROJECT_DIR$/bower.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -1297,7 +1258,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1305,7 +1265,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-60">
           <caret line="8" column="46" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1313,7 +1272,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1329,7 +1287,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
           <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1345,13 +1302,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="795">
           <caret line="53" column="59" selection-start-line="53" selection-start-column="59" selection-end-line="53" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
+        <state relative-caret-position="1500">
           <caret line="100" column="2" selection-start-line="100" selection-start-column="2" selection-end-line="100" selection-end-column="2" />
           <folding />
         </state>
@@ -1359,24 +1315,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/lib/controls.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="285">
           <caret line="19" column="74" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/lib/FIIT_DV/treeViz.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/lib/FIIT_DV/nodes/folderNode.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="141" column="10" selection-start-line="141" selection-start-column="10" selection-end-line="141" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -1389,26 +1329,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -1426,24 +1350,6 @@
         <state relative-caret-position="885">
           <caret line="59" column="15" selection-start-line="59" selection-start-column="15" selection-end-line="59" selection-end-column="15" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="71" selection-start-line="17" selection-start-column="71" selection-end-line="17" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/lib/FIIT_DV/loggers/MouseClickLogger.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="33" column="37" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#37#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1473,7 +1379,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/bower_components/threex.htmlmixer/threex.htmlmixer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
+        <state relative-caret-position="1680">
           <caret line="112" column="72" selection-start-line="105" selection-start-column="8" selection-end-line="112" selection-end-column="72" />
           <folding />
         </state>
@@ -1482,17 +1388,65 @@
     <entry file="file://$PROJECT_DIR$/app/views/home/show_file.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
-          <caret line="1" column="56" selection-start-line="1" selection-start-column="56" selection-end-line="1" selection-end-column="56" />
+          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/lib/FIIT_DV/nodes/folderNode.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="141" column="19" selection-start-line="141" selection-start-column="19" selection-end-line="141" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/home/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="68" selection-start-line="17" selection-start-column="68" selection-end-line="17" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/lib/FIIT_DV/loggers/MouseClickLogger.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="50" column="9" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
           <folding>
-            <element signature="n#style#0;n#pre#0;n#!!top" expanded="true" />
+            <element signature="e#0#37#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/lib/FIIT_DV/treeViz.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="24" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/lib/FIIT_DV/core/selector.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="85" column="11" selection-start-line="85" selection-start-column="11" selection-end-line="85" selection-end-column="11" />
+        <state relative-caret-position="589">
+          <caret line="184" column="33" selection-start-line="184" selection-start-column="33" selection-end-line="184" selection-end-column="33" />
           <folding>
             <element signature="e#0#36#0" expanded="false" />
           </folding>
