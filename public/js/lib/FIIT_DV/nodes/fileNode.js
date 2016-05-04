@@ -34,6 +34,7 @@ FIIT_DV.FileNode = class extends THREE.Mesh {
 
         this.path = path + "/" + data.name;
         this.userData = this;
+        this.name = data.name;
         this.createText( data.name );
         this.selector = selector;
         this.createTags( data.tags );

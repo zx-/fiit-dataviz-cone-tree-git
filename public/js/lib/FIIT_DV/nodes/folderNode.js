@@ -16,6 +16,7 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
 
         this.path = path;
         this.selector = selector;
+        this.name = name;
 
 
         let keys = Object.getOwnPropertyNames( data ).filter((key) => {
@@ -27,9 +28,13 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
         this.childNodes = [];
         this.lines = {};
 
+        var matcher = this.selector.filterRegex || new RegExp('.*','i');
+
         for( let i = 0; i < keys.length; i++ ) {
 
             let key = keys[i];
+            if( !matcher.test(key) ) continue;
+
             let keyData = data[key];
             this.childNodes.push(new FIIT_DV.FolderNode( key, `${this.path}/${key}`, keyData, selector ));
 
@@ -37,6 +42,7 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
 
         data.___files.sort((a,b) => a.name > b.name).forEach( (f) => {
 
+            if( !matcher.test(f.name) ) return;
             let file = new FIIT_DV.FileNode(this.path, f, selector);
             this.childNodes.push(file);
 
@@ -154,8 +160,30 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
         this.lines[node.path] = line;
     }
 
+    addOrRemoveChildrenFromScene() {
+        this.remove(this.text);
+
+        if ( this.childMem ) {
+            this.childMem.forEach((c) => this.add(c));
+            this.childMem = false;
+        } else {
+            this.childMem = [];
+            for ( let i = this.children.length - 1; i >= 0; i-- ){
+                let c = this.children[i];
+                this.childMem.push(c);
+                this.remove(c);
+            }
+        }
+
+        this.add(this.text);
+    }
+
     select () {
+
+        this.addOrRemoveChildrenFromScene();
+        this.selector.deselect();
         this.selector.selectFolder(this);
+
     }
 
     get computedRadius () {

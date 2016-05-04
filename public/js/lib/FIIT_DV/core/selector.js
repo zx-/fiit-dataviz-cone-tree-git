@@ -27,13 +27,54 @@ FIIT_DV.Selector = class {
         // this._controls.enableZoom = false;
 
         this.createControls();
+        this.createFilterEvents();
 
     }
 
     tick ( delta, now ) {
 
-        this.renderer.render( this.scene, this.camera );
+        this.renderer.render( this.scene, this.camera, document.getElementById( "web-gl-canvas" ) );
         this.controls.update();
+
+    }
+
+    createFilterEvents() {
+        var selector = this;
+
+        $('#name-filter').on('blur', function () {
+            selector.filterByName( $(this).val() );
+        });
+        $('#redraw-button').on('click',(event)=>{
+            event.preventDefault();
+            event.stopPropagation();
+            selector.filterRegex = new RegExp($('#name-filter').val(), "i");
+            FIIT_DV.TreeViz.instance.createTree();
+        });
+    }
+
+
+    filterByName( name ) {
+
+        this.deselect();
+
+        var nameRegex = new RegExp(name, "i");
+        var elemPaths = Object.getOwnPropertyNames(this.elements);
+
+        elemPaths.forEach(( path )=>{
+            let elemHash = this.elements[path];
+            let elem = elemHash.element;
+
+            if( nameRegex.test( elem.name ) ){
+
+                elemHash.selected = true;
+              //  console.log('matched', elem.name);
+                this.colorLines(elem.parent,elem.path);
+                //e.material.color.setHex(FIIT_DV.LINE_SELECTED_COLOUR);
+
+
+            }
+        });
+
 
     }
 
@@ -47,6 +88,7 @@ FIIT_DV.Selector = class {
         controls.staticMoving = true;
         controls.dynamicDampingFactor = 0.3;
         controls.keys = [ 65, 83, 68 ];
+        //controls.enabled = false;
 
 
         this.controls = controls;
@@ -87,8 +129,8 @@ FIIT_DV.Selector = class {
         var axis = new THREE.Vector3(0,1,0);
         var rad = Math.PI/2;
 
-        fileElemHash.detail.iframeDetail.lookAt(lookAtvec);
-        fileElemHash.detail.plane.lookAt(lookAtvec);
+        // fileElemHash.detail.iframeDetail.lookAt(lookAtvec);
+        // fileElemHash.detail.plane.lookAt(lookAtvec);
 
         fileElemHash.detail.iframeDetail.rotateOnAxis(axis,rad);
         fileElemHash.detail.plane.rotateOnAxis(axis,rad);
@@ -106,7 +148,6 @@ FIIT_DV.Selector = class {
     };
 
     colorLines ( e, path, color = FIIT_DV.LINE_SELECTED_COLOUR ) {
-
         if(!e.lines || !e.lines[path] ) return;
 
         e.lines[path].material.color.setHex(color);
@@ -165,7 +206,7 @@ FIIT_DV.Selector = class {
         return object;
     }
 
-    deselect ( element ) {
+    deselect () {
 
         var elemPaths = Object.getOwnPropertyNames(this.elements);
 
@@ -179,9 +220,10 @@ FIIT_DV.Selector = class {
                     FIIT_DV.LINE_COLOUR
                 );
 
-                this.scene.remove(elemHash.detail.iframeDetail);
-                this.htmlObj.scene.remove(elemHash.detail.plane);
-
+                if ( elemHash.detail ) {
+                    this.scene.remove(elemHash.detail.iframeDetail);
+                    this.htmlObj.scene.remove(elemHash.detail.plane);
+                }
                 elemHash.selected = false;
 
             }
