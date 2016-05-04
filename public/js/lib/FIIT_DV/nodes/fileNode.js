@@ -36,9 +36,30 @@ FIIT_DV.FileNode = class extends THREE.Mesh {
         this.userData = this;
         this.createText( data.name );
         this.selector = selector;
-
+        this.createTags( data.tags );
+        selector.addElement(this);
     }
 
+    createTags ( tags ) {
+
+        if (!tags) return;
+
+        var y = -FIIT_DV.ELEMENT_MARGIN/1.5;
+        var geometry = new THREE.BoxGeometry( 0.7, .3, 0.7 );
+
+        tags.forEach((t) => {
+            let material = new THREE.MeshPhongMaterial( {
+                color: TagsColor[t.type] || TagsColor["default"]
+            });
+
+            let o = new THREE.Mesh( geometry, material );
+
+            o.position.y = y;
+            y -= 0.35;
+
+            this.add(o);
+        });
+    }
 
     createText ( t ) {
 
@@ -49,7 +70,7 @@ FIIT_DV.FileNode = class extends THREE.Mesh {
         );
 
         this.add(text);
-        text.position.set( 0 , -FIIT_DV.ELEMENT_MARGIN/2, 0 );
+        text.position.set( 0 , -FIIT_DV.ELEMENT_MARGIN/10, 0 );
         text.scale.set( 0.05, 0.05, 0.05 );
         //text.rotation.z -= Math.PI/2;
 

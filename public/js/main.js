@@ -99,3 +99,18 @@ var LangColor = {
     "Vim": 0,
     "YACC": 0
 };
+
+var TagsColor = {
+    "default": 0xD1D1D1,
+    "named anchor" : 0xD911B4,
+    "JavaScript function" : 0xB111D9,
+    "class" : 0xd94d11,
+    "enum constant" : 0x111ED9,
+    "method" : 0x11D918,
+    "module" : 0x11D6D9,
+    "singleton method" : 0xD94A11,
+    "function" : 0xD9117C,
+    "property" : 0x663951,
+    "global variable" : 0xE5FF00,
+    "variable" : 0x00A8BA
+};

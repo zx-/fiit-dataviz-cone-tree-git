@@ -15,7 +15,8 @@ class HomeController < ApplicationController
 
 
   def show_file
-    @file = Repo.find_by_id(par[:repo]).show_file(par[:path].gsub(/\/\//,'.'))
+    @path = par[:path].gsub(/\/\/[[:alnum:]]/) { |m| ".#{m[-1,1]}" }
+    @file = Repo.find_by_id(par[:repo]).show_file( @path )
   end
 
   private

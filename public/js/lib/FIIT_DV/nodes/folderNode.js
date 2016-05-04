@@ -25,6 +25,8 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
 
         keys.sort();
         this.childNodes = [];
+        this.lines = {};
+
         for( let i = 0; i < keys.length; i++ ) {
 
             let key = keys[i];
@@ -64,7 +66,7 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
                 node.position.set(position.x, -FIIT_DV.LEVEL_MARGIN, position.z);
                 this.addLineToNode(node);
 
-                let [xi, xi_prime, yi, yi_prime] = intersection(
+                let res = intersection(
                     position.x,
                     position.z,
                     node.computedRadius + nextNode.computedRadius,
@@ -72,6 +74,10 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
                     0,
                     this.computedRadius
                 );
+
+                if(!res) continue;
+
+                let [xi, xi_prime, yi, yi_prime] = res;
 
                 position.x = xi;
                 position.z = yi;
@@ -82,6 +88,7 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
 
         this.createText( `${name} w:${this.computedWidth} ch:${data.___childCount}` );
         this.userData = this;
+        selector.addElement(this);
     }
 
     * makeChildDupletIterator () { // Return duplets of nodes
@@ -141,8 +148,10 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
             node.position
         );
 
-        this.line = new THREE.Line( geometry, material );
-        this.add( this.line );
+        let line = new THREE.Line( geometry, material );
+        this.add( line );
+
+        this.lines[node.path] = line;
     }
 
     select () {
