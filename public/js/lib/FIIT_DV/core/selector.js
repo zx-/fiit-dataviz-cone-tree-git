@@ -53,9 +53,19 @@ FIIT_DV.Selector = class {
             FIIT_DV.TreeViz.instance.createTree();
 
         });
+        $('#filter-button').on('click',(event)=>{
+            event.preventDefault();
+            event.stopPropagation();
+
+            //selector.pathsToIgnore =
+            selector.redrawByName( $('#name-filter').val() , true);
+            //selector.filterRegex = new RegExp($('#name-filter').val(), "i");
+            //FIIT_DV.TreeViz.instance.createTree();
+
+        });
     }
 
-    redrawByName( name ) {
+    redrawByName( name, remove = false ) {
 
         FIIT_DV.TreeViz.instance.createTree();
         this.deselect();
@@ -108,25 +118,29 @@ FIIT_DV.Selector = class {
             }
         });
 
+        if ( remove ) {
+
+            var levels = Object.getOwnPropertyNames(elemsToRemove);
+
+            levels.sort((a, b) => b - a);
+
+            levels.forEach((level) => {
+
+                elemsToRemove[level].forEach((elem) => {
+
+                    elem.parent.remove(
+                        elem.parent.lines[elem.path]
+                    );
+                    elem.parent.remove(elem);
+
+                });
+
+            });
+
+        }
+
+
         return pathsToIgnore;
-
-
-        // var levels = Object.getOwnPropertyNames(elemsToRemove);
-        //
-        // levels.sort((a,b) => b-a);
-        //
-        // levels.forEach((level) => {
-        //
-        //     elemsToRemove[level].forEach((elem)  => {
-        //
-        //         elem.parent.remove(
-        //             elem.parent.lines[elem.path]
-        //         );
-        //         elem.parent.remove(elem);
-        //
-        //     });
-        //
-        // });
 
     }
 

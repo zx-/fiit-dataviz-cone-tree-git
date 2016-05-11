@@ -45,13 +45,54 @@ FIIT_DV.TreeViz = class {
 
     createTree () {
 
+        this.eraseLegend();
+        
         if ( this.tree ) this.renderer.removeRenderable( this.tree );
 
         this.tree = new FIIT_DV.Tree( this.data, this.selector );
         this.renderer.addRenderable( this.tree );
 
+        this.createLegend();
+
     }
 
+    eraseLegend () {
+        $('#legend').empty();
 
+        FIIT_DV.TreeViz.colorsUsed = {
+            folder : {},
+            file_types : {},
+            tags : {}
+        }
+    }
+
+    createLegend(){
+
+        this.createList ( 'Folder', FIIT_DV.TreeViz.colorsUsed.folder );
+        this.createList ( 'File types', FIIT_DV.TreeViz.colorsUsed.file_types );
+        this.createList ( 'File tags', FIIT_DV.TreeViz.colorsUsed.tags );
+
+    }
+
+    createList ( name, hash ) {
+
+        var colors = FIIT_DV.TreeViz.colorsUsed;
+        var f = $(`<p>${name}:</p>`);
+        var l = $('<ul></ul>',{class:'legend'});
+        f.append(l);
+        var keys = Object.getOwnPropertyNames(hash);
+
+        keys.forEach((key) => {
+
+            let s = $("<div class='stvorcek'></div>");
+            $(s).css('background-color', new THREE.Color(hash[key]).getStyle());
+
+            l.append($(`<li>${key}</li>`).prepend(s));
+
+        });
+
+        $('#legend').append(f);
+
+    }
 
 };

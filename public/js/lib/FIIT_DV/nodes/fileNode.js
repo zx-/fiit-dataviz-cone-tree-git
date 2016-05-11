@@ -17,13 +17,20 @@ FIIT_DV.FileNode = class extends THREE.Mesh {
                 color: LangColor[data.tags[0].language]
             });
 
+            FIIT_DV.TreeViz.colorsUsed.file_types[data.tags[0].language] = LangColor[data.tags[0].language];
+
         } else {
 
             var material = new THREE.MeshPhongMaterial( {color: 0x00ff00} );
+            FIIT_DV.TreeViz.colorsUsed.file_types['default'] = 0x00ff00;
 
             FIIT_DV.FileNode.FILE_TEST.forEach((test) => {
-                if( test.regex.test(data.name) )
+                if( test.regex.test(data.name) ){
+
+                    FIIT_DV.TreeViz.colorsUsed.file_types[test.lang] = test.color;
                     material = new THREE.MeshPhongMaterial( {color:test.color} );
+
+                }
             });
 
         }
@@ -59,6 +66,12 @@ FIIT_DV.FileNode = class extends THREE.Mesh {
             y -= 0.35;
 
             this.add(o);
+
+            if ( TagsColor[t.type] ) {
+                FIIT_DV.TreeViz.colorsUsed.tags[t.type] = TagsColor[t.type];
+            } else {
+                FIIT_DV.TreeViz.colorsUsed.tags['default'] = TagsColor['default'];
+            }
         });
     }
 
@@ -95,8 +108,8 @@ FIIT_DV.FileNode = class extends THREE.Mesh {
 };
 
 FIIT_DV.FileNode.FILE_TEST = [
-    { regex: new RegExp('.*\.js','i'),      color: 0x800000 },
-    { regex: new RegExp('.*\.rb','i'),      color: 0x191970 },
-    { regex: new RegExp('.*\.html','i'),    color: 0x468499 },
-    { regex: new RegExp('.*\.xml','i'),     color: 0xffff66 }
+    { regex: new RegExp('.*\.js','i'),      color: 0x800000, lang: 'JavaScript' },
+    { regex: new RegExp('.*\.rb','i'),      color: 0x191970, lang: 'Ruby' },
+    { regex: new RegExp('.*\.html','i'),    color: 0x468499, lang: 'HTML' },
+    { regex: new RegExp('.*\.xml','i'),     color: 0xffff66, lang: 'XML' }
 ];

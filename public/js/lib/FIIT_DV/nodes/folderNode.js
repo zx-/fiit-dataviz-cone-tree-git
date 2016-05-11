@@ -12,6 +12,8 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
             emissive: 0x072534
         } );
 
+        FIIT_DV.TreeViz.colorsUsed.folder.default = 0x156289;
+
         super(geometry,material);
 
         this.path = path;
