@@ -47,9 +47,87 @@ FIIT_DV.Selector = class {
         $('#redraw-button').on('click',(event)=>{
             event.preventDefault();
             event.stopPropagation();
-            selector.filterRegex = new RegExp($('#name-filter').val(), "i");
+
+            selector.pathsToIgnore = selector.redrawByName( $('#name-filter').val() );
+            //selector.filterRegex = new RegExp($('#name-filter').val(), "i");
             FIIT_DV.TreeViz.instance.createTree();
+
         });
+    }
+
+    redrawByName( name ) {
+
+        FIIT_DV.TreeViz.instance.createTree();
+        this.deselect();
+
+        var nameRegex = new RegExp(name, "i");
+        var elemPaths = Object.getOwnPropertyNames(this.elements);
+
+        var elemsToRemove = {};
+        var pathsToIgnore = [];
+
+        elemPaths.forEach(( path )=>{
+            let elemHash = this.elements[path];
+            let elem = elemHash.element;
+
+            if( nameRegex.test( elem.name ) ){
+
+                elemHash.selected = true;
+
+                var parent = elem.parent;
+
+                while( parent.lines ) {
+
+                    this.elements[parent.path].selected = true;
+                    parent = parent.parent;
+
+                }
+                // //  console.log('matched', elem.name);
+                // this.colorLines(elem.parent,elem.path);
+                // //e.material.color.setHex(FIIT_DV.LINE_SELECTED_COLOUR);
+
+
+
+            }
+        });
+
+        elemPaths.forEach(( path )=>{
+
+            let elemHash = this.elements[path];
+            let elem = elemHash.element;
+
+            if( !elemHash.selected ){
+
+                if (!elemsToRemove[path.split("/").length])
+                    elemsToRemove[path.split("/").length] = [];
+
+                !elemsToRemove[path.split("/").length].push(elemHash.element);
+
+                pathsToIgnore.push(path);
+
+            }
+        });
+
+        return pathsToIgnore;
+
+
+        // var levels = Object.getOwnPropertyNames(elemsToRemove);
+        //
+        // levels.sort((a,b) => b-a);
+        //
+        // levels.forEach((level) => {
+        //
+        //     elemsToRemove[level].forEach((elem)  => {
+        //
+        //         elem.parent.remove(
+        //             elem.parent.lines[elem.path]
+        //         );
+        //         elem.parent.remove(elem);
+        //
+        //     });
+        //
+        // });
+
     }
 
 

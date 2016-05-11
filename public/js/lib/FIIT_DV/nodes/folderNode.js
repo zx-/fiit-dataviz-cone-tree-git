@@ -29,11 +29,12 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
         this.lines = {};
 
         var matcher = this.selector.filterRegex || new RegExp('.*','i');
+        var pathsToIgnore = this.selector.pathsToIgnore || [];
 
         for( let i = 0; i < keys.length; i++ ) {
 
             let key = keys[i];
-            if( !matcher.test(key) ) continue;
+            if( !matcher.test(key) || pathsToIgnore.includes(`${this.path}/${key}`) ) continue;
 
             let keyData = data[key];
             this.childNodes.push(new FIIT_DV.FolderNode( key, `${this.path}/${key}`, keyData, selector ));
@@ -42,7 +43,7 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
 
         data.___files.sort((a,b) => a.name > b.name).forEach( (f) => {
 
-            if( !matcher.test(f.name) ) return;
+            if( !matcher.test(f.name) || pathsToIgnore.includes(`${this.path}/${f.name}`)) return;
             let file = new FIIT_DV.FileNode(this.path, f, selector);
             this.childNodes.push(file);
 
@@ -92,7 +93,7 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
 
         }
 
-        this.createText( `${name} w:${this.computedWidth} ch:${data.___childCount}` );
+        this.createText( `${name}` );
         this.userData = this;
         selector.addElement(this);
     }
@@ -129,7 +130,7 @@ FIIT_DV.FolderNode = class extends THREE.Mesh {
         );
 
         this.add(text);
-        text.position.set( 0, FIIT_DV.ELEMENT_MARGIN/2, 0 );
+        text.position.set( 0, FIIT_DV.ELEMENT_MARGIN, 0 );
         text.scale.set( 0.05, 0.05, 0.05 );
 
         this.text = text;
